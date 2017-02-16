@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Encoder</title>
+  <script>
+  var NOTES = {
+    'a': 174.6,
+    'b': 185.0,
+    'c': 196.0,
+    'd': 207.7,
+    'e': 220.0,
+    'f': 233.1,
+    'g': 246.9,
+    'h': 261.6,
+    'i': 277.2,
+    'j': 293.7,
+    'k': 311.1,
+    'l': 329.6,
+    'm': 349.2,
+    'n': 370.0,
+    'o': 392.0,
+    'p': 415.3,
+    'q': 440.0,
+    'r': 466.2,
+    's': 493.9,
+    't': 523.3,
+    'u': 554.4,
+    'v': 587.3,
+    'w': 622.3,
+    'x': 659.3,
+    'y': 698.5,
+    'z': 740.0
+  }
+
+  var id = 'gyqwipfgq';
+
+  // Convert letters to pitches
+  var pitchlist = id.split('').map(function (l) {
+    return NOTES[l];
+  });
+
+  // Setup oscillator
+  context = new AudioContext;
+  oscillator = context.createOscillator();
+  oscillator.connect(context.destination);
+  oscillator.frequency.value = pitchlist.shift();
+
+  var step = 0;
+  // var playback = setInterval(function () {
+  //   if (step >= pitchlist.length) {
+  //     clearInterval(playback);
+  //     // oscillator.stop();
+  //     return;
+  //   }
+  //   oscillator.frequency.value = pitchlist[step];
+  //   step++;
+  // }, 750);
+
+  oscillator.start(0);
+  </script>
+</head>
+<body>
+</body>
+</html>
